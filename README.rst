@@ -54,6 +54,16 @@ Beware this plugin may need additional packages installed on your system to run 
 
 Enables and configures the df plugin.
 
+``collectd.cpu``
+---------------
+
+Enables and configures the cpu plugin.
+
+``collectd.memory``
+---------------
+
+Enables and configures the memory plugin.
+
 ``collectd.disk``
 -----------------
 
