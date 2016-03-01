@@ -17,6 +17,8 @@ collectd:
     {%- if collectd_settings.pkg_version is defined and collectd_settings.pkg_version %}
     - version: '{{ collectd_settings.pkg_version }}'
     {%- endif %}
+    - require:
+      - pkgrepo: collectd
 
 {{ collectd_settings.plugindirconfig }}:
   file.directory:
