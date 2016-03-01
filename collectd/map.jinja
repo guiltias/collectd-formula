@@ -1,3 +1,4 @@
+{# TODO: move this to Ubuntu section #}
 {% set os_map = salt['grains.filter_by']({
     'Debian': {
         'config': '/etc/collectd/collectd.conf',
@@ -9,7 +10,6 @@
         'moduledirconfig': '/usr/share/collectd/modules',
         'user': 'root',
         'group': 'root',
-{# TODO: move this to Ubuntu section #}
         'distr': 'trusty',
         'version': '5.5',
     },
