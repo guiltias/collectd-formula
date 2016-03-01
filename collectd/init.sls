@@ -4,6 +4,14 @@ include:
   - collectd.service
 
 collectd:
+  pkgrepo.managed:
+    - humanname: CollectD
+    - name: "deb http://pkg.ci.collectd.org/deb trusty collectd-5.5"
+    - dist: trusty
+    - file: /etc/apt/sources.list.d/collectd.list
+    - keyid: B8543576
+    - keyserver: keyserver.ubuntu.com
+
   pkg.installed:
     - name: {{ collectd_settings.pkg }}
     {%- if collectd_settings.pkg_version is defined and collectd_settings.pkg_version %}
