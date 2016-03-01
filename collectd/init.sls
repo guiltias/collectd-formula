@@ -6,8 +6,8 @@ include:
 collectd:
   pkgrepo.managed:
     - humanname: CollectD
-    - name: "deb http://pkg.ci.collectd.org/deb trusty collectd-5.5"
-    - dist: trusty
+    - name: "deb http://pkg.ci.collectd.org/deb {{ collectd_settings.distr }} collectd-{{ collectd_settings.version }}"
+    - dist: {{ collectd_settings.distr }}
     - file: /etc/apt/sources.list.d/collectd.list
     - keyid: B8543576
     - keyserver: keyserver.ubuntu.com
