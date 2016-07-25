@@ -3,8 +3,14 @@
 include:
   - collectd
 
-liboping0:
-  pkg.installed
+
+install_ping_lib:
+  pkg.installed:
+{% if salt['grains.get']('os') == 'Amazon' %}
+    - name: liboping
+{% else %}
+    - name: liboping0 
+{% endif %}
 
 {{ collectd_settings.plugindirconfig }}/ping.conf:
   file.managed:
@@ -14,6 +20,6 @@ liboping0:
     - mode: 644
     - template: jinja
     - require:
-      - pkg: liboping0
+      - pkg: install_ping_lib
     - watch_in:
       - service: collectd-service
