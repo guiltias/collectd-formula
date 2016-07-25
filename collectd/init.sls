@@ -4,6 +4,13 @@ include:
   - collectd.service
 
 collectd:
+{% if salt['grains.get']('os') == 'Amazon' %}
+  pkgrepo.managed:
+    - humanname: CollectD
+    - baseurl: "https://pkg.ci.collectd.org/rpm/collectd-5.5/epel-6-x86_64"
+    - file: /etc/yum.repos.d/collectd.repo
+    - gpgcheck: 0
+{% else %}
   pkgrepo.managed:
     - humanname: CollectD
     - name: "deb http://pkg.ci.collectd.org/deb {{ collectd_settings.distr }} collectd-{{ collectd_settings.version }}"
@@ -11,7 +18,7 @@ collectd:
     - file: /etc/apt/sources.list.d/collectd.list
     - keyid: B8543576
     - keyserver: keyserver.ubuntu.com
-
+{% endif %}
   pkg.installed:
     - name: {{ collectd_settings.pkg }}
     {%- if collectd_settings.pkg_version is defined and collectd_settings.pkg_version %}
