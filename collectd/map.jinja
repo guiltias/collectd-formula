@@ -23,6 +23,16 @@
         'user': 'root',
         'group': 'root',
     },
+    'Amazon': {
+        'config': '/etc/collectd.conf',
+        'pkg': 'collectd',
+        'plugindirconfig': '/etc/collectd.d',
+        'service': 'collectd',
+        'TypesDB': ['/usr/share/collectd/types.db'],
+        'moduledirconfig': '/usr/share/collectd/modules',
+        'user': 'root',
+        'group': 'root',
+    },
     'FreeBSD': {
         'config': '/usr/local/etc/collectd.conf',
         'pkg': 'collectd5',
